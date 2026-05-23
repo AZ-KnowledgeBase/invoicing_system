@@ -26,6 +26,7 @@ public class Customer {
         this.gender = gender;
     }
 
+    // Getters and Setters
     public int getCustomerID() {
         return customerID;
     }
