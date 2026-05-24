@@ -1,0 +1,10 @@
+=========================================
+       ABC Company Invoicing System      
+=========================================
+1. Manage Products
+2. Manage Customers
+3. Invoice Generation
+4. Admin Tasks
+5. Exit System
+-----------------------------------------
+Select an option (1-5): 

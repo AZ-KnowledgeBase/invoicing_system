@@ -19,7 +19,7 @@ public class InvoiceEntry {
 
     // Getters and Setters
     public float getTotalPrice() {
-    return totalPrice;
+        return totalPrice;
     }
 
     public void setTotalPrice(float totalPrice) {
@@ -51,8 +51,8 @@ public class InvoiceEntry {
     }
 
     public Product getProduct() {
-    return product;
-}
+        return product;
+    }
 
     public void setProduct(Product product) {
         this.product = product;

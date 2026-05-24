@@ -1,0 +1,9 @@
+------ Manage Products ------
+1. Add Product
+2. Update Product
+3. Display Product List
+4. Search Product by ID
+5. Delete Product
+6. Back to Main Menu
+-----------------------------
+Select an option (1-6): 

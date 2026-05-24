@@ -1,0 +1,7 @@
+------ Invoice Generation ------
+1. Create New Invoice
+2. View Invoices by Customer
+3. View Invoices by Date Range
+4. Back to Main Menu
+--------------------------------
+Select an option (1-4): 

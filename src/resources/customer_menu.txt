@@ -1,0 +1,9 @@
+------ Manage Customers ------
+1. Add Customer
+2. Update Customer
+3. Display Customer List
+4. Search Customer by ID
+5. Delete Customer
+6. Back to Main Menu
+------------------------------
+Select an option (1-6): 
