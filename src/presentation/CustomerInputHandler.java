@@ -14,6 +14,7 @@ public class CustomerInputHandler {
     private final SystemManager systemManager = new SystemManager();
     private final Scanner scanner = new Scanner(System.in);
 
+    // Collects fields before creating customer object
     void handleAddCustomer() {
         System.out.println("\n--- Add New Customer ---");
 
@@ -53,6 +54,7 @@ public class CustomerInputHandler {
         }
     }
 
+    // Find existing customer, only overwriting fields that user types something new
     void handleUpdateCustomer() {
         System.out.println("\n--- Update Customer ---");
 
@@ -61,6 +63,8 @@ public class CustomerInputHandler {
             int id = Integer.parseInt(scanner.nextLine().trim());
 
             Customer existing = systemManager.findCustomerById(id);
+            // Stops instead of prompting for customer that doesn't exist
+
             if (existing == null) {
                 System.out.println("No customer found with ID: " + id);
                 return;
@@ -90,6 +94,7 @@ public class CustomerInputHandler {
             System.out.print("New DOB YYYY-MM-DD (or press Enter to keep): ");
             LocalDate dob = ValidationUtili.parseDate(scanner);
             if (dob != null) existing.setDob(dob);
+            // Replaces DOB if a valid data is entered, null means enter was pressed
 
             System.out.println("Current Gender  : " + existing.getGender());
             System.out.print("New Gender (or press Enter to keep): ");
@@ -108,6 +113,7 @@ public class CustomerInputHandler {
         }
     }
 
+    // Creates a table that stays aligned with each field
     void handleDisplayAllCustomers() {
         System.out.println("\n--- Customer List ---");
 
@@ -118,12 +124,14 @@ public class CustomerInputHandler {
                 System.out.println("No customers found in the system.");
                 return;
             }
-
+            
+            // Print text in fixed-width columns so everything lines up nicely
             System.out.printf("%-5s %-20s %-25s %-15s %-12s %-8s%n",
                     "ID", "Name", "Email", "Contact", "DOB", "Gender");
             System.out.println("-".repeat(90));
 
             for (Customer c : customers) {
+                // Falls back to "N/A" if DOB was not set rather than printing "null"
                 System.out.printf("%-5d %-20s %-25s %-15s %-12s %-8s%n",
                         c.getCustomerID(),
                         c.getCustomerName(),
@@ -137,6 +145,7 @@ public class CustomerInputHandler {
             System.out.println("Database error: " + e.getMessage());
         }
     }
+    
 
     void handleSearchCustomer() {
         System.out.println("\n--- Search Customer ---");
@@ -166,6 +175,7 @@ public class CustomerInputHandler {
         }
     }
 
+    // Looks up by ID and confirms with user whether they wish to delete the customer
     void handleDeleteCustomer() {
         System.out.println("\n--- Delete Customer ---");
 
@@ -182,7 +192,8 @@ public class CustomerInputHandler {
             System.out.print("Are you sure you want to delete: "
                     + existing.getCustomerName() + "? (Y/N): ");
             String confirm = scanner.nextLine().trim();
-
+            
+            // Uses equalsIgnoreCase so both "y" and "Y" are accepted
             if (confirm.equalsIgnoreCase("Y")) {
                 boolean success = systemManager.deleteCustomer(id);
                 System.out.println(success
