@@ -11,10 +11,14 @@ public class ValidationUtili {
     public static LocalDate parseDate(Scanner scanner) {
         while (true) {
             String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                return null; // user pressed Enter, keep existing value
+            }
+
             try {
                 return LocalDate.parse(input, DateTimeFormatter.ISO_LOCAL_DATE);
             } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format. Please re-enter (YYYY-MM-DD): ");
+                System.out.print("Invalid date format. Please re-enter (YYYY-MM-DD): ");
             }
         }
     }

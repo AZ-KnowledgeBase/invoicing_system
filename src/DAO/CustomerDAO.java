@@ -110,6 +110,7 @@ public class CustomerDAO {
                 c.setCustomerName(rs.getString("customerName"));
                 c.setEmail(rs.getString("email"));
                 c.setContact(rs.getString("contact"));
+                c.setAddress(rs.getString("address")); 
 
                 Date dobSql = rs.getDate("dob");
                 if (dobSql != null) c.setDob(dobSql.toLocalDate());
@@ -123,7 +124,7 @@ public class CustomerDAO {
   // Display all customers
     public ArrayList<Customer> getAll() throws SQLException {
         String sql = """
-            SELECT customerID, customerName, email, contact, dob, gender
+            SELECT customerID, customerName, email, contact, address, dob, gender
             FROM customers
             ORDER BY customerID
             """;
@@ -139,6 +140,7 @@ public class CustomerDAO {
                 c.setCustomerName(rs.getString("customerName"));
                 c.setEmail(rs.getString("email"));
                 c.setContact(rs.getString("contact"));
+                c.setAddress(rs.getString("address")); 
 
                 Date dobSql = rs.getDate("dob");
                 if (dobSql != null) c.setDob(dobSql.toLocalDate());

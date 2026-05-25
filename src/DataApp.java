@@ -1,8 +1,8 @@
-import presentation.HandleMenu;
+import presentation.MenuDisplay;
 
 public class DataApp {
     public static void main(String[] args) {
-        HandleMenu menu = new HandleMenu();
+        MenuDisplay menu = new MenuDisplay();
         menu.showMainMenu();
     }
 }
