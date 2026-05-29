@@ -2,10 +2,13 @@ package service;
 
 import DAO.CustomerDAO;
 import DAO.ProductDAO;
+import DAO.InvoiceDAO;
 import model.Customer;
 import model.Product;
+import model.Invoice;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SystemManager {
@@ -55,4 +58,20 @@ public class SystemManager {
     public ArrayList<Product> getAllProducts() throws SQLException {
         return productDAO.getAll();
     }
+
+    // Invoice operations
+    private final InvoiceDAO invoiceDAO = new InvoiceDAO();
+
+    public boolean addInvoice(Invoice invoice) throws SQLException {
+        return invoiceDAO.add(invoice);
+    }
+
+    public ArrayList<Invoice> getInvoicesByCustomer(int customerID) throws SQLException {
+        return invoiceDAO.findByCustomerId(customerID);
+    }
+
+    public ArrayList<Invoice> getInvoicesByDateRange(LocalDate from, LocalDate to) throws SQLException {
+        return invoiceDAO.findByDateRange(from, to);
+    }
+
 }

@@ -11,6 +11,7 @@ public class MenuDisplay {
     private final Scanner scanner = new Scanner(System.in); //Captures the user's menu choice from the terminal
      private final CustomerInputHandler customerInputHandler = new CustomerInputHandler();
     private final ProductInputHandler productInputHandler = new ProductInputHandler();
+    private final InvoiceInputHandler  invoiceHandler    = new InvoiceInputHandler();
 
     // Load and Display Menu file
     private void displayMenu(String fileName) {
@@ -43,7 +44,7 @@ public class MenuDisplay {
             switch (choice) {
                 case "1" -> showProductMenu();
                 case "2" -> showCustomerMenu();
-                case "3" -> System.out.println("[Invoice Generation - Coming Soon]");
+                case "3" -> showInvoiceMenu();
                 case "4" -> System.out.println("[Admin Tasks - Coming Soon]");
                 case "5" -> {
                     System.out.println("Exiting system. Goodbye!");
@@ -91,6 +92,25 @@ public class MenuDisplay {
                 case "5" -> customerInputHandler.handleDeleteCustomer();
                 case "6" -> inCustomerMenu = false;
                 default  -> System.out.println("Invalid option. Please enter a number between 1 and 6.");
+            }
+        }
+    }
+
+    // Shows invoice menu, returns to main menu upon exit
+    private void showInvoiceMenu() {
+        boolean inInvoiceMenu = true;
+
+        while (inInvoiceMenu) {
+            displayMenu("invoice_menu.txt");
+            String choice = scanner.nextLine().trim();
+
+            switch (choice) {
+                case "1" -> invoiceHandler.handleGenerateInvoice();
+                case "2" -> invoiceHandler.handleViewByCustomer();
+                case "3" -> invoiceHandler.handleViewByDateRange();
+                // Option 4 exits the loop returning the user to the main menu
+                case "4" -> inInvoiceMenu = false;
+                default  -> System.out.println("Invalid option. Please enter a number between 1 and 5.");
             }
         }
     }

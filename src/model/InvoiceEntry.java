@@ -2,28 +2,44 @@ package model;
 
 public class InvoiceEntry {
 
-    private Product product; // Reference to product object
-    private float totalPrice;
-    private float unitPrice; 
-    private float discount;
-    private float quantitySold;
+    private int productID;
+    private String productName;   
+    private int quantitySold;   
+    private float unitPrice;    
+    private float totalPrice;   
 
-    // Constructor Invoice Entry
-    public InvoiceEntry(Product product, float totalPrice, float unitPrice, float discount, float quantitySold) {
-    this.product = product;
-    this.totalPrice = totalPrice;
-    this.unitPrice = unitPrice;
-    this.discount = discount;
-    this.quantitySold = quantitySold;
-}
-
-    // Getters and Setters
-    public float getTotalPrice() {
-        return totalPrice;
+    // When building an invoice entry from user input
+    public InvoiceEntry(int productID, String productName, int quantitySold, float unitPrice, float totalPrice) {
+        this.productID    = productID;
+        this.productName  = productName;
+        this.quantitySold = quantitySold;
+        this.unitPrice    = unitPrice;
+        this.totalPrice   = totalPrice;
     }
 
-    public void setTotalPrice(float totalPrice) {
-        this.totalPrice = totalPrice;
+    // Getters and Setters
+    public int getProductID() {
+    return productID;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public int getQuantitySold() {
+        return quantitySold;
+    }
+
+    public void setQuantitySold(int quantitySold) {
+        this.quantitySold = quantitySold;
     }
 
     public float getUnitPrice() {
@@ -34,27 +50,11 @@ public class InvoiceEntry {
         this.unitPrice = unitPrice;
     }
 
-    public float getDiscount() {
-        return discount;
+    public float getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setDiscount(float discount) {
-        this.discount = discount;
-    }
-
-    public float getQuantitySold() {
-        return quantitySold;
-    }
-
-    public void setQuantitySold(float quantitySold) {
-        this.quantitySold = quantitySold;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
